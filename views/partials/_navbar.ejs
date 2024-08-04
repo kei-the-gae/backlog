@@ -3,10 +3,10 @@
     <a href="/games">Browse Popular Games</a>
     <% if (user) { %>
     <a href="/users/userId-here">Your Collection</a>
-    <p style="display: inline-block"><%= user.username %></p>
+    <p style="display: inline-block"><%= user.displayName ? user.displayName : user.username %></p>
     <a href="/auth/sign-out">Sign Out</a>
     <% } else { %>
     <a href="/auth/sign-in">Sign In</a>
     <a href="/auth/sign-up">Sign Up</a>
-    <% }; %>
+    <% } %>
 </nav>
