@@ -16,4 +16,12 @@ router.get('/', async (req, res) => {
     };
 });
 
+router.get('/search', async (req, res) => {
+    if (req.session.user) {
+        res.render('/games/search.ejs');
+    } else {
+        res.redirect('/auth/sign-in.ejs');
+    };
+});
+
 module.exports = router;
