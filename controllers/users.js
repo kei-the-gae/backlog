@@ -32,6 +32,10 @@ router.get('/:userId/games', async (req, res) => {
     };
 });
 
+router.get('/:userId/games/new', async (req, res) => {
+    res.render('users/games/new.ejs');
+});
+
 router.get('/:userId/wishlist', async (req, res) => {
     try {
         const targetUser = await User.findById(req.params.userId);
@@ -45,6 +49,10 @@ router.get('/:userId/wishlist', async (req, res) => {
         console.log(err);
         res.redirect('/');
     };
+});
+
+router.get('/:userId/wishlist/new', async (req, res) => {
+    res.render('users/wishlist/new.ejs');
 });
 
 module.exports = router;

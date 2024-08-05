@@ -16,6 +16,9 @@
         <%= username %>'s Wishlist
         <% }; %>
     </h1>
+    <% if (userId === user._id) { %>
+    <a href="/users/<%= userId %>/wishlist/new">Wishlist a Game</a>
+    <% }; %>
 </body>
 
 </html>

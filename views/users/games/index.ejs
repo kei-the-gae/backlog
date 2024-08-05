@@ -16,6 +16,9 @@
         <%= username %>'s Games
         <% }; %>
     </h1>
+    <% if (userId === user._id) { %>
+    <a href="/users/<%= userId %>/games/new">Add a Game</a>
+    <% }; %>
 </body>
 
 </html>
