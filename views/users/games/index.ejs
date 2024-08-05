@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= username %>'s Games</title>
+</head>
+
+<body>
+    <%- include('../../partials/_navbar') %>
+    <h1>
+        <% if (displayName) { %>
+        <%= displayName %>'s Games (<%= username %>)
+        <% } else { %>
+        <%= username %>'s Games
+        <% }; %>
+    </h1>
+</body>
+
+</html>
