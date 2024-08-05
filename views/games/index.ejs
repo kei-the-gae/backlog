@@ -11,10 +11,9 @@
     <%- include('../partials/_navbar') %>
     <h1>Browse games added by our users</h1>
     <ul>
-        <li>this is</li>
-        <li>a dummy list</li>
-        <li>for testing</li>
-        <li>purposes</li>
+        <% games.forEach(game => { %>
+        <li><a href="/games/<%= game.id %>"><%= game.name %></a></li>
+        <% }); %>
     </ul>
 </body>
 
