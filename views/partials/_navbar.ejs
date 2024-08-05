@@ -2,7 +2,7 @@
     <a href="/">Home</a>
     <a href="/games">Browse Popular Games</a>
     <% if (user) { %>
-    <a href="/users/userId-here">Your Collection</a>
+    <a href="/users/<%= user._id %>">Your Collection</a>
     <p style="display: inline-block"><%= user.displayName ? user.displayName : user.username %></p>
     <a href="/auth/sign-out">Sign Out</a>
     <% } else { %>
