@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const gameSchema = mongoose.Schema({
+    igdbId: Number,
     name: String,
     multiplayer: Boolean,
     genre: [

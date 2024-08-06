@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const User = require('../models/user');
+const Game = require('../models/game');
 
 router.get('/', async (req, res) => {
     try {
@@ -70,12 +71,24 @@ router.get('/:userId/games/new', async (req, res) => {
             headers: queryHeaders,
         });
         const queryData = await queryRes.json();
+
         if (!queryRes.ok) {
             console.log(queryData);
             throw new Error(`Query response status: ${queryRes.status}`);
         };
 
-        console.log(queryData);
+        const gameInDatabase = await Game.find({ igdbId: id });
+
+        if (!gameInDatabase.length) {
+            await Game.create({
+                igdbId: queryData[0].id,
+                name: queryData[0].name,
+                // multiplayer: queryData[0].multiplayer_modes.,
+                // genre: queryData[0].genres.name,
+                summary: queryData[0].summary,
+                url: queryData[0].url,
+            });
+        };
 
         res.render('users/games/new.ejs', {
             game: queryData,
