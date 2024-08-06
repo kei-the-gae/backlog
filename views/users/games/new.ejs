@@ -9,6 +9,21 @@
 
 <body>
     <h1>Add a game to your collection</h1>
+    <h2><%= game[0].name %></h2>
+    <form action="/users/:userId" method="post">
+        <label for="gameComplete">Game complete?</label>
+        <input type="radio" name="gameComplete" value="true" />Yes
+        <input type="radio" name="gameComplete" value="false" />No
+
+        <label for="achievementsComplete">Achievements complete?</label>
+        <input type="radio" name="achievementsComplete" value="true" />Yes
+        <input type="radio" name="achievementsComplete" value="false" />No
+
+        <label for="notes">Notes:</label>
+        <textarea name="notes" id="notes"></textarea>
+
+        <button type="submit">Submit</button>
+    </form>
 </body>
 
 </html>

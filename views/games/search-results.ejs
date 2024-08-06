@@ -13,8 +13,8 @@
     <p>Not finding the game you're looking for? <a href="/games/search">Go back</a> and try searching again.</p>
     <ul>
         <% games.forEach(game => { %>
-        <li><a href="/users/<%= user._id %>/games/new"><%= game.name %></a> <a href="<%= game.url %>" target="_blank"
-                rel="noopener noreferrer">IGDB</a></li>
+        <li><a href="/users/<%= user._id %>/games/new?game=<%= game.id %>"><%= game.name %></a> <a
+                href="<%= game.url %>" target="_blank" rel="noopener noreferrer">IGDB</a></li>
         <% }); %>
     </ul>
 </body>
