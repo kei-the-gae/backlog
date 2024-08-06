@@ -26,7 +26,7 @@ router.get('/search', async (req, res) => {
 
 router.post('/search-results', async (req, res) => {
     try {
-        const name = req.body.name;
+        const search = req.body.name;
         const authBaseUrl = `https://id.twitch.tv/oauth2/token?client_id=${process.env.TWITCH_CLIENT_ID}&client_secret=${process.env.TWITCH_CLIENT_SECRET}&grant_type=client_credentials`;
 
         const authRes = await fetch(authBaseUrl, { method: "POST", });
@@ -46,7 +46,7 @@ router.post('/search-results', async (req, res) => {
 
         const queryRes = await fetch(queryBaseUrl, {
             method: "POST",
-            body: `search "${name}"; fields name; limit 50;`,
+            body: `search "${search}"; fields name,url; limit 50;`,
             headers: queryHeaders,
         });
         const queryData = await queryRes.json();
@@ -55,7 +55,10 @@ router.post('/search-results', async (req, res) => {
             throw new Error(`Query response status: ${queryRes.status}`);
         };
 
-        res.render('games/search-results.ejs', { queryData });
+        res.render('games/search-results.ejs', {
+            search,
+            games: queryData,
+        });
     } catch (err) {
         console.log(err);
         res.redirect('/');
