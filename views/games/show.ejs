@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= game.name %></title>
+</head>
+
+<body>
+    <h1><%= game.name %></h1>
+    <a href="<%= game.url %>" target="_blank" rel="noopener noreferrer">IGDB</a>
+    <p><%= game.summary %></p>
+
+    <% if (user) { %>
+    <p>Completion status: </p>
+    <p>Achievement completion status: </p>
+    <p>Notes: </p>
+
+    <a href="#">Edit this game</a>
+    <form action="" method="post">
+        <button type="submit">Delete this game</button>
+    </form>
+    <% }; %>
+</body>
+
+</html>

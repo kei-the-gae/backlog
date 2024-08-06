@@ -16,6 +16,22 @@ router.get('/', async (req, res) => {
     };
 });
 
+router.get('/:gameId', async (req, res) => {
+    try {
+        // guests accessing show pages currently throws an error bc defining currentUser fails
+        const gameId = req.params.gameId;
+        const game = await Game.findById(gameId);
+        const currentUser = await User.findById(req.session.user._id);
+        res.render('games/show.ejs', {
+            game,
+            user: currentUser,
+        });
+    } catch (err) {
+        console.log(err);
+        res.redirect('/');
+    };
+});
+
 router.get('/search', async (req, res) => {
     if (req.session.user) {
         res.render('games/search.ejs');
