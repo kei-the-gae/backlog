@@ -18,9 +18,47 @@ router.get('/', async (req, res) => {
 
 router.get('/search', async (req, res) => {
     if (req.session.user) {
-        res.render('/games/search.ejs');
+        res.render('games/search.ejs');
     } else {
-        res.redirect('/auth/sign-in.ejs');
+        res.redirect('auth/sign-in.ejs');
+    };
+});
+
+router.post('/search-results', async (req, res) => {
+    try {
+        const name = req.body.name;
+        const authBaseUrl = `https://id.twitch.tv/oauth2/token?client_id=${process.env.TWITCH_CLIENT_ID}&client_secret=${process.env.TWITCH_CLIENT_SECRET}&grant_type=client_credentials`;
+
+        const authRes = await fetch(authBaseUrl, { method: "POST", });
+        const authData = await authRes.json();
+
+        if (!authRes.ok) {
+            console.log(authData);
+            throw new Error(`Authentication response status: ${authRes.status}`);
+        };
+
+        const queryBaseUrl = 'https://api.igdb.com/v4/games';
+        const queryHeaders = {
+            'Client-ID': `${process.env.TWITCH_CLIENT_ID}`,
+            Authorization: `Bearer ${authData['access_token']}`,
+            Accept: 'application/json',
+        };
+
+        const queryRes = await fetch(queryBaseUrl, {
+            method: "POST",
+            body: `search "${name}"; fields name; limit 50;`,
+            headers: queryHeaders,
+        });
+        const queryData = await queryRes.json();
+        if (!queryRes.ok) {
+            console.log(queryData);
+            throw new Error(`Query response status: ${queryRes.status}`);
+        };
+
+        res.render('games/search-results.ejs', { queryData });
+    } catch (err) {
+        console.log(err);
+        res.redirect('/');
     };
 });
 
