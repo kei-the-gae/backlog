@@ -83,4 +83,19 @@ router.get('/:gameId', async (req, res) => {
     };
 });
 
+router.delete('/:gameId', async (req, res) => {
+    try {
+        const gameId = req.params.gameId;
+        const currentUser = await User.findById(req.session.user._id);
+        const userGameDataIdx = currentUser.games.findIndex(game => game.game.equals(gameId));
+        // const userGameData = currentUser.games[userGameDataIdx];
+        currentUser.games[userGameDataIdx].deleteOne();
+        await currentUser.save();
+        res.redirect('/games');
+    } catch (err) {
+        console.log(err);
+        res.redirect('/');
+    };
+});
+
 module.exports = router;

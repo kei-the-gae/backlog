@@ -19,7 +19,7 @@
     <p>Notes: <%= userGameData.notes %></p>
 
     <a href="#">Edit this game</a>
-    <form action="" method="post">
+    <form action="/games/<%= game._id %>?_method=DELETE" method="post">
         <button type="submit">Delete this game</button>
     </form>
     <% }; %>
