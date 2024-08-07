@@ -19,6 +19,13 @@
     <% if (userId === user._id) { %>
     <a href="/games/search">Add a new game</a>
     <% }; %>
+    <ul>
+        <% games.forEach(game => { %>
+        <li>
+            <a href="/games/<%= game.game._id %>"><%= game.game._id %></a>
+        </li>
+        <% }); %>
+    </ul>
 </body>
 
 </html>
