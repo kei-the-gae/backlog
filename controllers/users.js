@@ -33,11 +33,15 @@ router.get('/:userId', async (req, res) => {
 router.get('/:userId/games', async (req, res) => {
     try {
         const targetUser = await User.findById(req.params.userId);
+        const allGames = await Game.find();
+        const userGames = [];
+        targetUser.games.forEach(game => {
+            const currentGame = allGames.find(entry => game.game.equals(entry._id));
+            userGames.push(currentGame);
+        });
         res.render('users/games/index.ejs', {
-            userId: req.params.userId,
-            displayName: targetUser.displayName,
-            username: targetUser.username,
-            games: targetUser.games,
+            targetUser,
+            games: userGames,
         });
     } catch (err) {
         console.log(err);

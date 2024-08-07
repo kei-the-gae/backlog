@@ -4,25 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= username %>'s Games</title>
+    <title><%= targetUser.username %>'s Games</title>
 </head>
 
 <body>
     <%- include('../../partials/_navbar') %>
     <h1>
-        <% if (displayName) { %>
-        <%= displayName %>'s Games (<%= username %>)
+        <% if (targetUser.displayName) { %>
+        <%= targetUser.displayName %>'s Games (<%= targetUser.username %>)
         <% } else { %>
-        <%= username %>'s Games
+        <%= targetUser.username %>'s Games
         <% }; %>
     </h1>
-    <% if (userId === user._id) { %>
+    <% if (targetUser._id === user._id) { %>
     <a href="/games/search">Add a new game</a>
     <% }; %>
     <ul>
         <% games.forEach(game => { %>
         <li>
-            <a href="/games/<%= game.game._id %>"><%= game.game._id %></a>
+            <a href="/games/<%= game._id %>"><%= game.name %></a>
         </li>
         <% }); %>
     </ul>
