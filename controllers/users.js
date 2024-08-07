@@ -20,9 +20,7 @@ router.get('/:userId', async (req, res) => {
     try {
         const targetUser = await User.findById(req.params.userId);
         res.render('users/show.ejs', {
-            userId: req.params.userId,
-            displayName: targetUser.displayName,
-            username: targetUser.username,
+            targetUser,
         });
     } catch (err) {
         console.log(err);

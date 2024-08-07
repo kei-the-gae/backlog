@@ -5,20 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/style.css" />
-    <title><%= username %>'s Profile</title>
+    <title><%= targetUser.username %>'s Profile</title>
 </head>
 
 <body>
     <%- include('../partials/_navbar') %>
     <h1>
-        <% if (displayName) { %>
-        <%= displayName %>'s Profile (<%= username %>)
+        <% if (targetUser.displayName) { %>
+        <%= targetUser.displayName %>'s Profile (<%= targetUser.username %>)
         <% } else { %>
-        <%= username %>'s Profile
+        <%= targetUser.username %>'s Profile
         <% }; %>
     </h1>
-    <a href="/users/<%= userId %>/games">View Game Collection</a>
-    <a href="/users/<%= userId %>/wishlist">View Wishlist</a>
+    <a href="/users/<%= targetUser._id %>/games">View Game Collection</a>
+    <a href="/users/<%= targetUser._id %>/wishlist">View Wishlist</a>
 </body>
 
 </html>
