@@ -77,3 +77,46 @@ body {
 .signin-link:hover {
     background-color: #ffffff;
 }
+
+.signin-container,
+.signup-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+h1 {
+    color: #83c8fa;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 20em;
+    height: 50%;
+    background-color: #deedf8;
+    padding: 30px 40px 20px 40px;
+    border-radius: 20px;
+    color: #4b598e;
+    font-weight: bold;
+}
+
+input {
+    border: 1px solid rgb(182, 182, 182);
+    padding: 8px;
+    border-radius: 10px;
+}
+
+button {
+    padding: 10px;
+    background-color: #1a9fff;
+    color: white;
+    border-radius: 30px;
+    border: none;
+    margin: 15px 0;
+    font-size: 1.1em;
+}
