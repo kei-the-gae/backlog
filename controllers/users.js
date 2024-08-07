@@ -47,6 +47,7 @@ router.get('/:userId/games', async (req, res) => {
 
 router.get('/:userId/games/new', async (req, res) => {
     try {
+        const userId = req.session.user._id;
         const id = req.query.game;
         const authBaseUrl = `https://id.twitch.tv/oauth2/token?client_id=${process.env.TWITCH_CLIENT_ID}&client_secret=${process.env.TWITCH_CLIENT_SECRET}&grant_type=client_credentials`;
 
@@ -90,9 +91,27 @@ router.get('/:userId/games/new', async (req, res) => {
             });
         };
 
+        const newGame = await Game.find({ igdbId: id });
+        // console.log(newGame);
+
         res.render('users/games/new.ejs', {
-            game: queryData,
+            userId,
+            newGame,
         });
+    } catch (err) {
+        console.log(err);
+        res.redirect('/');
+    };
+});
+
+router.post('/:userId/games', async (req, res) => {
+    try {
+        const gameId = req.query.game;
+        const currentUser = await User.findById(req.session.user._id);
+        req.body.game = gameId;
+        currentUser.games.push(req.body);
+        await currentUser.save();
+        res.redirect(`/users/${currentUser._id}/games`);
     } catch (err) {
         console.log(err);
         res.redirect('/');

@@ -9,8 +9,8 @@
 
 <body>
     <h1>Add a game to your collection</h1>
-    <h2><%= game[0].name %></h2>
-    <form action="/users/:userId?game=<%= game[0].id %>" method="post">
+    <h2><%= newGame.name %></h2>
+    <form action="/users/<%= userId %>/games?game=<%= newGame[0]._id %>" method="post">
         <label for="gameComplete">Game complete?</label>
         <input type="radio" name="gameComplete" value="true" />Yes
         <input type="radio" name="gameComplete" value="false" />No
