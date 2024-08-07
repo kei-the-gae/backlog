@@ -89,7 +89,6 @@ router.delete('/:gameId', async (req, res) => {
         const gameId = req.params.gameId;
         const currentUser = await User.findById(req.session.user._id);
         const userGameDataIdx = currentUser.games.findIndex(game => game.game.equals(gameId));
-        // const userGameData = currentUser.games[userGameDataIdx];
         currentUser.games[userGameDataIdx].deleteOne();
         await currentUser.save();
         res.redirect('/games');

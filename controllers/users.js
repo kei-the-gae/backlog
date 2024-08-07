@@ -84,15 +84,12 @@ router.get('/:userId/games/new', async (req, res) => {
             await Game.create({
                 igdbId: queryData[0].id,
                 name: queryData[0].name,
-                // multiplayer: queryData[0].multiplayer_modes.,
-                // genre: queryData[0].genres.name,
                 summary: queryData[0].summary,
                 url: queryData[0].url,
             });
         };
 
         const newGame = await Game.find({ igdbId: id });
-        // console.log(newGame);
 
         res.render('users/games/new.ejs', {
             userId,
