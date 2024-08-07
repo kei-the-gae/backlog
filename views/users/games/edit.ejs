@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit <%= game.name %></title>
+</head>
+
+<body>
+    <h1>Add a game to your collection</h1>
+    <h2><%= game.name %></h2>
+    <form action="/users/<%= user._id %>/games/<%= game._id %>?_method=PUT" method="post">
+        <label for="gameComplete">Game complete?</label>
+        <input type="radio" name="gameComplete" value="true"
+            <% if (userGameData.gameComplete === true) { %>checked<% } %> />Yes
+        <input type="radio" name="gameComplete" value="false"
+            <% if (userGameData.gameComplete === false) { %>checked<% } %> />No
+
+        <label for="achievementsComplete">Achievements complete?</label>
+        <input type="radio" name="achievementsComplete" value="true"
+            <% if (userGameData.achievementsComplete === true) { %>checked<% } %> />Yes
+        <input type="radio" name="achievementsComplete" value="false"
+            <% if (userGameData.achievementsComplete === false) { %>checked<% } %> />No
+
+        <label for="notes">Notes:</label>
+        <textarea name="notes" id="notes"><%= userGameData.notes %></textarea>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+
+</html>

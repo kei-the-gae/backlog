@@ -118,6 +118,37 @@ router.post('/:userId/games', async (req, res) => {
     };
 });
 
+router.get('/:userId/games/:gameId/edit', async (req, res) => {
+    try {
+        const gameId = req.params.gameId;
+        const game = await Game.findById(gameId);
+        const currentUser = await User.findById(req.session.user._id);
+        const userGameDataIdx = currentUser.games.findIndex(game => game.game.equals(gameId));
+        const userGameData = currentUser.games[userGameDataIdx];
+        res.render('users/games/edit.ejs', {
+            game,
+            userGameData,
+        })
+    } catch (err) {
+        console.log(err);
+        res.redirect('/');
+    };
+});
+
+router.put('/:userId/games/:gameId', async (req, res) => {
+    try {
+        const gameId = req.params.gameId;
+        const currentUser = await User.findById(req.session.user._id);
+        const userGameDataIdx = currentUser.games.findIndex(game => game.game.equals(gameId));
+        currentUser.games[userGameDataIdx].set(req.body);
+        await currentUser.save();
+        res.redirect(`/games/${gameId}`);
+    } catch (err) {
+        console.log(err);
+        res.redirect('/');
+    };
+});
+
 router.get('/:userId/wishlist', async (req, res) => {
     try {
         const targetUser = await User.findById(req.params.userId);

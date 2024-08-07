@@ -75,6 +75,7 @@ router.get('/:gameId', async (req, res) => {
         const userGameData = currentUser.games[userGameDataIdx];
         res.render('games/show.ejs', {
             game,
+            user: currentUser,
             userGameData,
         });
     } catch (err) {
