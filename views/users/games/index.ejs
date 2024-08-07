@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <title><%= targetUser.username %>'s Games</title>
 </head>
 
@@ -16,7 +17,9 @@
         <%= targetUser.username %>'s Games
         <% }; %>
     </h1>
-    <% if (targetUser._id === user._id) { %>
+    <% console.log(targetUser._id) %>
+    <% console.log(user._id) %>
+    <% if (targetUser._id == user._id) { %>
     <a href="/games/search">Add a new game</a>
     <% }; %>
     <ul>
