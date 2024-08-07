@@ -1,13 +1,27 @@
+<link rel="stylesheet" href="/stylesheets/partials.css" />
 <nav>
-    <a href="/">Home</a>
-    <a href="/games">Browse Popular Games</a>
     <% if (user) { %>
-    <a href="/users">Explore Our Community</a>
-    <a href="/users/<%= user._id %>">Your Collection</a>
-    <p style="display: inline-block"><%= user.displayName ? user.displayName : user.username %></p>
-    <a href="/auth/sign-out">Sign Out</a>
+    <div class="navbar">
+        <div class="nav-main">
+            <h1 id="nav-header"><a class="home" href="/">Backlog</a></h1>
+            <a class="link" href="/games">Browse Popular Games</a>
+        </div>
+        <div class="nav-links">
+            <a class="link" href="/users">Explore Our Community</a>
+            <a class="link" href="/users/<%= user._id %>">Your Collection</a>
+            <p class="user"><%= user.displayName ? user.displayName : user.username %></p>
+            <a class="link" href="/auth/sign-out">Sign Out</a>
+        </div>
+    </div>
     <% } else { %>
-    <a href="/auth/sign-in">Sign In</a>
-    <a href="/auth/sign-up">Sign Up</a>
-    <% } %>
+    <div class="navbar">
+        <div class="nav-main">
+            <h1 id="nav-header"><a class="home" href="/">Backlog</a></h1>
+            <a class="link" href="/games">Browse Popular Games</a>
+        </div>
+        <div class="nav-links">
+            <a class="link" href="/auth/sign-in">Sign In</a>
+            <a class="link" href="/auth/sign-up">Sign Up</a>
+        </div>
+        <% }; %>
 </nav>

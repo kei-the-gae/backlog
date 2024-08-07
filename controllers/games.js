@@ -91,7 +91,7 @@ router.delete('/:gameId', async (req, res) => {
         const userGameDataIdx = currentUser.games.findIndex(game => game.game.equals(gameId));
         currentUser.games[userGameDataIdx].deleteOne();
         await currentUser.save();
-        res.redirect('/games');
+        res.redirect(`/users/${currentUser._id}/games`);
     } catch (err) {
         console.log(err);
         res.redirect('/');
