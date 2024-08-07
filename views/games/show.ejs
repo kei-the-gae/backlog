@@ -13,8 +13,7 @@
     <a href="<%= game.url %>" target="_blank" rel="noopener noreferrer">IGDB</a>
     <p><%= game.summary %></p>
 
-    <!-- users who don't have a game are currently erroring out -->
-    <% if (user) { %>
+    <% if (userGameData) { %>
     <p>Completion status: <%= userGameData.gameComplete %></p>
     <p>Achievement completion status: <%= userGameData.achievementsComplete %></p>
     <p>Notes: <%= userGameData.notes %></p>
