@@ -13,6 +13,7 @@
     <a href="<%= game.url %>" target="_blank" rel="noopener noreferrer">IGDB</a>
     <p><%= game.summary %></p>
 
+    <% if (user) { %>
     <% if (userGameData) { %>
     <p>Completion status: <%= userGameData.gameComplete %></p>
     <p>Achievement completion status: <%= userGameData.achievementsComplete %></p>
@@ -22,7 +23,12 @@
     <form action="/games/<%= game._id %>?_method=DELETE" method="post">
         <button type="submit">Delete this game</button>
     </form>
+    <% } else { %>
+    <a href="/users/<%= user._id %>/games/new?game=<%= game.igdbId %>">Add this game to your collection</a>
     <% }; %>
+
+    <% }; %>
+
 </body>
 
 </html>

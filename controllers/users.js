@@ -53,38 +53,38 @@ router.get('/:userId/games/new', async (req, res) => {
     try {
         const userId = req.session.user._id;
         const id = req.query.game;
-        const authBaseUrl = `https://id.twitch.tv/oauth2/token?client_id=${process.env.TWITCH_CLIENT_ID}&client_secret=${process.env.TWITCH_CLIENT_SECRET}&grant_type=client_credentials`;
-
-        const authRes = await fetch(authBaseUrl, { method: "POST", });
-        const authData = await authRes.json();
-
-        if (!authRes.ok) {
-            console.log(authData);
-            throw new Error(`Authentication response status: ${authRes.status}`);
-        };
-
-        const queryBaseUrl = 'https://api.igdb.com/v4/games';
-        const queryHeaders = {
-            'Client-ID': `${process.env.TWITCH_CLIENT_ID}`,
-            Authorization: `Bearer ${authData['access_token']}`,
-            Accept: 'application/json',
-        };
-
-        const queryRes = await fetch(queryBaseUrl, {
-            method: "POST",
-            body: `fields *; where id = ${id};`,
-            headers: queryHeaders,
-        });
-        const queryData = await queryRes.json();
-
-        if (!queryRes.ok) {
-            console.log(queryData);
-            throw new Error(`Query response status: ${queryRes.status}`);
-        };
-
         const gameInDatabase = await Game.find({ igdbId: id });
 
         if (!gameInDatabase.length) {
+            const authBaseUrl = `https://id.twitch.tv/oauth2/token?client_id=${process.env.TWITCH_CLIENT_ID}&client_secret=${process.env.TWITCH_CLIENT_SECRET}&grant_type=client_credentials`;
+
+            const authRes = await fetch(authBaseUrl, { method: "POST", });
+            const authData = await authRes.json();
+
+            if (!authRes.ok) {
+                console.log(authData);
+                throw new Error(`Authentication response status: ${authRes.status}`);
+            };
+
+            const queryBaseUrl = 'https://api.igdb.com/v4/games';
+            const queryHeaders = {
+                'Client-ID': `${process.env.TWITCH_CLIENT_ID}`,
+                Authorization: `Bearer ${authData['access_token']}`,
+                Accept: 'application/json',
+            };
+
+            const queryRes = await fetch(queryBaseUrl, {
+                method: "POST",
+                body: `fields *; where id = ${id};`,
+                headers: queryHeaders,
+            });
+            const queryData = await queryRes.json();
+
+            if (!queryRes.ok) {
+                console.log(queryData);
+                throw new Error(`Query response status: ${queryRes.status}`);
+            };
+
             await Game.create({
                 igdbId: queryData[0].id,
                 name: queryData[0].name,
