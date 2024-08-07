@@ -71,9 +71,11 @@ router.get('/:gameId', async (req, res) => {
         const gameId = req.params.gameId;
         const game = await Game.findById(gameId);
         const currentUser = await User.findById(req.session.user._id);
+        const userGameDataIdx = currentUser.games.findIndex(game => game.game.equals(gameId));
+        const userGameData = currentUser.games[userGameDataIdx];
         res.render('games/show.ejs', {
             game,
-            user: currentUser,
+            userGameData,
         });
     } catch (err) {
         console.log(err);

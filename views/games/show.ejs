@@ -8,14 +8,16 @@
 </head>
 
 <body>
+    <%- include('../partials/_navbar') %>
     <h1><%= game.name %></h1>
     <a href="<%= game.url %>" target="_blank" rel="noopener noreferrer">IGDB</a>
     <p><%= game.summary %></p>
 
+    <!-- users who don't have a game are currently erroring out -->
     <% if (user) { %>
-    <p>Completion status: </p>
-    <p>Achievement completion status: </p>
-    <p>Notes: </p>
+    <p>Completion status: <%= userGameData.gameComplete %></p>
+    <p>Achievement completion status: <%= userGameData.achievementsComplete %></p>
+    <p>Notes: <%= userGameData.notes %></p>
 
     <a href="#">Edit this game</a>
     <form action="" method="post">
