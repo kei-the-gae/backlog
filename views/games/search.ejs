@@ -12,11 +12,14 @@
     <%- include('../partials/_navbar') %>
     <div class="search-container">
         <h1>Search for a game</h1>
-        <form action="/games/search-results" method="post">
-            <label for="name">Game Name:</label>
-            <input type="text" name="name" id="name" />
+        <form action="/games/search-results" method="post" id="search-bar">
 
-            <button type="submit">Search</button>
+            <label for="name">Game Name:</label>
+            <div id="search-input">
+                <input type="text" name="name" id="name" />
+
+                <button type="submit">Search</button>
+            </div>
         </form>
     </div>
 </body>

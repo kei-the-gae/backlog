@@ -10,25 +10,33 @@
 
 <body>
     <%- include('../partials/_navbar') %>
-    <h1><%= game.name %></h1>
-    <a href="<%= game.url %>" target="_blank" rel="noopener noreferrer">IGDB</a>
-    <p><%= game.summary %></p>
+    <div class="game-body">
+        <div class="game-header">
+            <h1><%= game.name %></h1>
+            <a class="igdb" href="<%= game.url %>" target="_blank" rel="noopener noreferrer">IGDB</a>
+            <p><%= game.summary %></p>
+        </div>
 
-    <% if (user) { %>
-    <% if (userGameData) { %>
-    <p>Completion status: <%= userGameData.gameComplete %></p>
-    <p>Achievement completion status: <%= userGameData.achievementsComplete %></p>
-    <p>Notes: <%= userGameData.notes %></p>
+        <% if (user) { %>
+        <% if (userGameData) { %>
+        <p>Completion status: <%= userGameData.gameComplete %></p>
+        <p>Achievement completion status: <%= userGameData.achievementsComplete %></p>
+        <p>Notes: <%= userGameData.notes %></p>
 
-    <a href="/users/<%= user._id %>/games/<%= game._id %>/edit">Edit this game</a>
-    <form action="/games/<%= game._id %>?_method=DELETE" method="post">
-        <button type="submit">Delete this game</button>
-    </form>
-    <% } else { %>
-    <a href="/users/<%= user._id %>/games/new?game=<%= game.igdbId %>">Add this game to your collection</a>
-    <% }; %>
+        <div class="edit-links">
+            <a class="edit-game-link" href="/users/<%= user._id %>/games/<%= game._id %>/edit">Edit this game</a>
+            <form action="/games/<%= game._id %>?_method=DELETE" method="post">
+                <button id="delete" type="submit">Delete this game</button>
+            </form>
+        </div>
+        <% } else { %>
+        <a href="/users/<%= user._id %>/games/new?game=<%= game.igdbId %>">Add this game to your collection</a>
+        <% }; %>
 
-    <% }; %>
+        <% }; %>
+    </div>
+
+
 
 </body>
 
