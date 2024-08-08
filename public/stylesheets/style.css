@@ -299,3 +299,7 @@ textarea {
     align-items: center;
     height: 100%;
 }
+
+button {
+    cursor: pointer;
+}
