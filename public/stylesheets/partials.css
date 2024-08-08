@@ -12,6 +12,7 @@
     color: #1a9fff;
     size: 1em !important;
     margin: 0;
+    user-select: none;
 }
 
 #nav-header>a {
@@ -26,6 +27,7 @@
     margin: 0 15px;
     color: #4b598e;
     font-weight: bold;
+    user-select: none;
 }
 
 .link:hover {
