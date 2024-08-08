@@ -13,6 +13,21 @@
     <h1>Add a game to your collection</h1>
     <h2><%= game.name %></h2>
     <form action="/users/<%= user._id %>/games/<%= game._id %>?_method=PUT" method="post">
+        <label for="platform">Platform: </label>
+        <select name="platform" id="platform">
+            <option selected disabled>Select Platform</option>
+            <option value="PC" <%= userGameData.platform === 'PC' ? 'selected' : '' %>>PC</option>
+            <option value="Steam" <%= userGameData.platform === 'Steam' ? 'selected' : '' %>>Steam</option>
+            <option value="Mac" <%= userGameData.platform === 'Mac' ? 'selected' : '' %>>Mac</option>
+            <option value="Playstation" <%= userGameData.platform === 'Playstation' ? 'selected' : '' %>>Playstation
+            </option>
+            <option value="Xbox" <%= userGameData.platform === 'Xbox' ? 'selected' : '' %>>Xbox</option>
+            <option value="Nintendo Switch" <%= userGameData.platform === 'Nintendo Switch' ? 'selected' : '' %>>
+                Nintendo Switch</option>
+            <option value="Emulator" <%= userGameData.platform === 'Emulator' ? 'selected' : '' %>>Emulator</option>
+            <option value="Other" <%= userGameData.platform === 'Other' ? 'selected' : '' %>>Other</option>
+        </select>
+
         <label for="gameComplete">Game complete?</label>
         <input type="radio" name="gameComplete" value="true"
             <% if (userGameData.gameComplete === true) { %>checked<% } %> />Yes

@@ -6,6 +6,7 @@ const userGameData = mongoose.Schema({
     ref: 'Game',
     required: true,
   },
+  platform: String,
   gameComplete: Boolean,
   achievementsComplete: Boolean,
   notes: String,

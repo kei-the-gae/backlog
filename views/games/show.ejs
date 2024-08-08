@@ -19,11 +19,26 @@
 
         <% if (user) { %>
         <% if (userGameData) { %>
+        <% if (userGameData.platform) { %>
+        <p>Platform: <%= userGameData.platform %> </p>
+        <% }; %>
         <% if (userGameData.gameComplete || userGameData.gameComplete === false) { %>
-        <p>Completion status: <%= userGameData.gameComplete %></p>
+        <p>Completion:
+            <% if (userGameData.gameComplete) { %>
+            Complete
+            <% } else { %>
+            Incomplete
+            <% }; %>
+        </p>
         <% }; %>
         <% if (userGameData.achievementsComplete || userGameData.achievementsComplete === false) { %>
-        <p>Achievement completion status: <%= userGameData.achievementsComplete %></p>
+        <p>Achievement completion:
+            <% if (userGameData.achievementsComplete) { %>
+            Complete
+            <% } else { %>
+            Incomplete
+            <% }; %>
+        </p>
         <% }; %>
         <% if (userGameData.notes) { %>
         <p>Notes: <%= userGameData.notes %></p>

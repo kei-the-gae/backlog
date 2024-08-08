@@ -13,6 +13,19 @@
     <h1>Add a game to your collection</h1>
     <h2><%= newGame.name %></h2>
     <form action="/users/<%= userId %>/games?game=<%= newGame[0]._id %>" method="post">
+        <label for="platform">Platform: </label>
+        <select name="platform" id="platform">
+            <option selected disabled>Select Platform</option>
+            <option value="PC">PC</option>
+            <option value="Steam">Steam</option>
+            <option value="Mac">Mac</option>
+            <option value="Playstation">Playstation</option>
+            <option value="Xbox">Xbox</option>
+            <option value="Nintendo Switch">Nintendo Switch</option>
+            <option value="Emulator">Emulator</option>
+            <option value="Other">Other</option>
+        </select>
+
         <label for="gameComplete">Game complete?</label>
         <input type="radio" name="gameComplete" value="true" />Yes
         <input type="radio" name="gameComplete" value="false" />No
