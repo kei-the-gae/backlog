@@ -46,6 +46,7 @@ body {
     align-items: center;
     margin: 0 80px 0 0;
     height: 100%;
+    cursor: pointer;
 }
 
 .signup-link,
@@ -56,16 +57,19 @@ body {
     border-radius: 25px;
     width: 10em;
     text-align: center;
+    cursor: pointer;
 }
 
 .signup-link {
     background-color: #1a9fff;
     color: white;
     margin: 0 0 20px 0;
+    cursor: pointer;
 }
 
 .signup-link:hover {
     background-color: #51b5fc;
+    cursor: pointer;
 }
 
 .signin-link {
@@ -76,6 +80,7 @@ body {
 
 .signin-link:hover {
     background-color: #ffffff;
+    cursor: pointer;
 }
 
 .signin-container,
@@ -119,11 +124,21 @@ button {
     border: none;
     margin: 15px 0;
     font-size: 1.1em;
+    cursor: pointer;
+}
+
+.search>form {
+    background-color: #deedf8;
+    padding: 30px 40px 20px 40px;
+    border-radius: 20px;
+    color: #4b598e;
+    font-weight: bold;
 }
 
 .all-games-body,
-.all-users.body,
-.user-body {
+.all-users-body,
+.user-body,
+.search-results-body {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -131,8 +146,9 @@ button {
 }
 
 .all-games-header,
-.all-users.header,
-.user-header {
+.all-users-header,
+.user-header,
+.search-results-header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -154,6 +170,17 @@ button {
 
 .add-game-link:hover {
     background-color: #51b5fc;
+    cursor: pointer;
+}
+
+#back {
+    color: #1a9fff;
+    text-decoration: none;
+}
+
+#back:hover {
+    color: #51b5fc;
+    cursor: pointer;
 }
 
 ul,
@@ -183,4 +210,5 @@ ul>a:hover,
 .user-body>a:hover {
     background-color: #4b598e;
     color: white;
+    cursor: pointer;
 }
