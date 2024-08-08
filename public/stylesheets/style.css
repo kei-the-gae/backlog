@@ -97,7 +97,9 @@ h1 {
     color: #83c8fa;
 }
 
-form {
+.signin-container>form,
+.signup-container>form,
+.game-form>form {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
