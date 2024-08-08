@@ -19,10 +19,15 @@
 
         <% if (user) { %>
         <% if (userGameData) { %>
+        <% if (userGameData.gameComplete || userGameData.gameComplete === false) { %>
         <p>Completion status: <%= userGameData.gameComplete %></p>
+        <% }; %>
+        <% if (userGameData.achievementsComplete || userGameData.achievementsComplete === false) { %>
         <p>Achievement completion status: <%= userGameData.achievementsComplete %></p>
+        <% }; %>
+        <% if (userGameData.notes) { %>
         <p>Notes: <%= userGameData.notes %></p>
-
+        <% }; %>
         <div class="edit-links">
             <a class="edit-game-link" href="/users/<%= user._id %>/games/<%= game._id %>/edit">Edit this game</a>
             <form action="/games/<%= game._id %>?_method=DELETE" method="post">
