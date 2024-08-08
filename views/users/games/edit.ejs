@@ -10,41 +10,55 @@
 
 <body>
     <%- include('../../partials/_navbar') %>
-    <h1>Add a game to your collection</h1>
-    <h2><%= game.name %></h2>
-    <form action="/users/<%= user._id %>/games/<%= game._id %>?_method=PUT" method="post">
-        <label for="platform">Platform: </label>
-        <select name="platform" id="platform">
-            <option selected disabled>Select Platform</option>
-            <option value="PC" <%= userGameData.platform === 'PC' ? 'selected' : '' %>>PC</option>
-            <option value="Steam" <%= userGameData.platform === 'Steam' ? 'selected' : '' %>>Steam</option>
-            <option value="Mac" <%= userGameData.platform === 'Mac' ? 'selected' : '' %>>Mac</option>
-            <option value="Playstation" <%= userGameData.platform === 'Playstation' ? 'selected' : '' %>>Playstation
-            </option>
-            <option value="Xbox" <%= userGameData.platform === 'Xbox' ? 'selected' : '' %>>Xbox</option>
-            <option value="Nintendo Switch" <%= userGameData.platform === 'Nintendo Switch' ? 'selected' : '' %>>
-                Nintendo Switch</option>
-            <option value="Emulator" <%= userGameData.platform === 'Emulator' ? 'selected' : '' %>>Emulator</option>
-            <option value="Other" <%= userGameData.platform === 'Other' ? 'selected' : '' %>>Other</option>
-        </select>
+    <div class="game-form">
+        <h1>Edit <%= game.name %></h1>
+        <h2><%= game.name %></h2>
+        <form action="/users/<%= user._id %>/games/<%= game._id %>?_method=PUT" method="post">
+            <label for="platform">Platform: </label>
+            <select name="platform" id="platform">
+                <option selected disabled>Select Platform</option>
+                <option value="PC" <%= userGameData.platform === 'PC' ? 'selected' : '' %>>PC</option>
+                <option value="Steam" <%= userGameData.platform === 'Steam' ? 'selected' : '' %>>Steam</option>
+                <option value="Mac" <%= userGameData.platform === 'Mac' ? 'selected' : '' %>>Mac</option>
+                <option value="Playstation" <%= userGameData.platform === 'Playstation' ? 'selected' : '' %>>Playstation
+                </option>
+                <option value="Xbox" <%= userGameData.platform === 'Xbox' ? 'selected' : '' %>>Xbox</option>
+                <option value="Nintendo Switch" <%= userGameData.platform === 'Nintendo Switch' ? 'selected' : '' %>>
+                    Nintendo Switch</option>
+                <option value="Emulator" <%= userGameData.platform === 'Emulator' ? 'selected' : '' %>>Emulator</option>
+                <option value="Other" <%= userGameData.platform === 'Other' ? 'selected' : '' %>>Other</option>
+            </select>
 
-        <label for="gameComplete">Game complete?</label>
-        <input type="radio" name="gameComplete" value="true"
-            <% if (userGameData.gameComplete === true) { %>checked<% } %> />Yes
-        <input type="radio" name="gameComplete" value="false"
-            <% if (userGameData.gameComplete === false) { %>checked<% } %> />No
+            <label for="gameComplete">Game complete?</label>
+            <div class="radio-group">
+                <div class="options">
+                    <input type="radio" name="gameComplete" value="true"
+                        <% if (userGameData.gameComplete === true) { %>checked<% } %> />Yes
+                </div>
+                <div class="options">
+                    <input type="radio" name="gameComplete" value="false"
+                        <% if (userGameData.gameComplete === false) { %>checked<% } %> />No
+                </div>
+            </div>
 
-        <label for="achievementsComplete">Achievements complete?</label>
-        <input type="radio" name="achievementsComplete" value="true"
-            <% if (userGameData.achievementsComplete === true) { %>checked<% } %> />Yes
-        <input type="radio" name="achievementsComplete" value="false"
-            <% if (userGameData.achievementsComplete === false) { %>checked<% } %> />No
+            <label for="achievementsComplete">Achievements complete?</label>
+            <div class="radio-group">
+                <div class="options">
+                    <input type="radio" name="achievementsComplete" value="true"
+                        <% if (userGameData.achievementsComplete === true) { %>checked<% } %> />Yes
+                </div>
+                <div class="options">
+                    <input type="radio" name="achievementsComplete" value="false"
+                        <% if (userGameData.achievementsComplete === false) { %>checked<% } %> />No
+                </div>
+            </div>
 
-        <label for="notes">Notes:</label>
-        <textarea name="notes" id="notes"><%= userGameData.notes %></textarea>
+            <label for="notes">Notes:</label>
+            <textarea name="notes" id="notes"><%= userGameData.notes %></textarea>
 
-        <button type="submit">Submit</button>
-    </form>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
 </body>
 
 </html>

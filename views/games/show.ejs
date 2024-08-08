@@ -50,7 +50,8 @@
             </form>
         </div>
         <% } else { %>
-        <a href="/users/<%= user._id %>/games/new?game=<%= game.igdbId %>">Add this game to your collection</a>
+        <a class="add-game-link" href="/users/<%= user._id %>/games/new?game=<%= game.igdbId %>">Add this game to your
+            collection</a>
         <% }; %>
 
         <% }; %>
