@@ -10,15 +10,19 @@
 
 <body>
     <%- include('../partials/_navbar') %>
-    <h1>
-        <% if (targetUser.displayName) { %>
-        <%= targetUser.displayName %>'s Profile (<%= targetUser.username %>)
-        <% } else { %>
-        <%= targetUser.username %>'s Profile
-        <% }; %>
-    </h1>
-    <a href="/users/<%= targetUser._id %>/games">View Game Collection</a>
-    <a href="/users/<%= targetUser._id %>/wishlist">View Wishlist</a>
+    <div class="user-body">
+        <div class="user-header">
+            <h1>
+                <% if (targetUser.displayName) { %>
+                <%= targetUser.displayName %>'s Profile (<%= targetUser.username %>)
+                <% } else { %>
+                <%= targetUser.username %>'s Profile
+                <% }; %>
+            </h1>
+        </div>
+        <a href="/users/<%= targetUser._id %>/games">View Game Collection</a>
+        <a href="/users/<%= targetUser._id %>/wishlist">View Wishlist</a>
+    </div>
 </body>
 
 </html>

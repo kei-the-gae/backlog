@@ -10,12 +10,18 @@
 
 <body>
     <%- include('../partials/_navbar') %>
-    <h1>Users</h1>
-    <ul>
-        <% users.forEach(user => { %>
-        <li><a href="/users/<%= user.id %>"><%= user.username %></a></li>
-        <% }); %>
-    </ul>
+    <div class="all-users-body">
+        <div class="all-users-header">
+            <h1>Users</h1>
+        </div>
+        <ul>
+            <% users.forEach(user => { %>
+            <a href="/users/<%= user.id %>">
+                <li><%= user.username %></li>
+            </a>
+            <% }); %>
+        </ul>
+    </div>
 </body>
 
 </html>

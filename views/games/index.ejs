@@ -10,17 +10,21 @@
 
 <body>
     <%- include('../partials/_navbar') %>
-    <h1>Browse games added by our users</h1>
-    <% if (user) { %>
-    <a href="/games/search">Add a new game</a>
-    <% }; %>
-    <ul>
-        <% games.forEach(game => { %>
-        <li>
-            <a href="/games/<%= game._id %>"><%= game.name %></a>
-        </li>
-        <% }); %>
-    </ul>
+    <div class="all-games-body">
+        <div class="all-games-header">
+            <h1>Browse games added by our users</h1>
+            <% if (user) { %>
+            <a class="add-game-link" href="/games/search">Add a new game</a>
+            <% }; %>
+        </div>
+        <ul>
+            <% games.forEach(game => { %>
+            <a href="/games/<%= game._id %>">
+                <li><%= game.name %></li>
+            </a>
+            <% }); %>
+        </ul>
+    </div>
 </body>
 
 </html>

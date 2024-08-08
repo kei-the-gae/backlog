@@ -120,3 +120,67 @@ button {
     margin: 15px 0;
     font-size: 1.1em;
 }
+
+.all-games-body,
+.all-users.body,
+.user-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.all-games-header,
+.all-users.header,
+.user-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    width: 90%;
+}
+
+.add-game-link {
+    padding: 10px;
+    background-color: #1a9fff;
+    color: white;
+    border-radius: 30px;
+    border: none;
+    font-size: 1.1em;
+    padding: 2px 25px;
+    text-decoration: none;
+}
+
+.add-game-link:hover {
+    background-color: #51b5fc;
+}
+
+ul,
+.user-body>a {
+    list-style: none;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+ul>a,
+.user-body>a {
+    text-decoration: none;
+    color: #1c2e5b;
+    width: 50%;
+    background-color: #f6e7e7;
+    border-radius: 30px;
+    padding: 10px 20px;
+    margin: 15px 0px;
+    font-weight: bold;
+    text-align: center;
+}
+
+ul>a:hover,
+.user-body>a:hover {
+    background-color: #4b598e;
+    color: white;
+}

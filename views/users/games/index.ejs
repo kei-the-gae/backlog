@@ -10,25 +10,27 @@
 
 <body>
     <%- include('../../partials/_navbar') %>
-    <h1>
-        <% if (targetUser.displayName) { %>
-        <%= targetUser.displayName %>'s Games (<%= targetUser.username %>)
-        <% } else { %>
-        <%= targetUser.username %>'s Games
-        <% }; %>
-    </h1>
-    <% console.log(targetUser._id) %>
-    <% console.log(user._id) %>
-    <% if (targetUser._id == user._id) { %>
-    <a href="/games/search">Add a new game</a>
-    <% }; %>
-    <ul>
-        <% games.forEach(game => { %>
-        <li>
-            <a href="/games/<%= game._id %>"><%= game.name %></a>
-        </li>
-        <% }); %>
-    </ul>
+    <div class="all-games-body">
+        <div class="all-games-header">
+            <h1>
+                <% if (targetUser.displayName) { %>
+                <%= targetUser.displayName %>'s Games (<%= targetUser.username %>)
+                <% } else { %>
+                <%= targetUser.username %>'s Games
+                <% }; %>
+            </h1>
+            <% if (targetUser._id == user._id) { %>
+            <a class="add-game-link" href="/games/search">Add a new game</a>
+            <% }; %>
+        </div>
+        <ul>
+            <% games.forEach(game => { %>
+            <a href="/games/<%= game._id %>">
+                <li><%= game.name %></li>
+            </a>
+            <% }); %>
+        </ul>
+    </div>
 </body>
 
 </html>
