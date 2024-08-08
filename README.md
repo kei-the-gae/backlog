@@ -8,7 +8,7 @@ An app to keep track of your video game collection.
 Inspired by my friend's Google Sheets of their game backlog. Also, we all spend far too much time in vc scrolling through Steam pondering on what to play and who has what.
 
 ### Getting started
-[go here]()
+[go here](https://git.heroku.com/backlog-app.git)
 
 ### Attributions
 [IGDB API v4](https://www.igdb.com/api)
