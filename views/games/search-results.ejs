@@ -18,10 +18,13 @@
         </div>
         <ul>
             <% games.forEach(game => { %>
-            <a href="/users/<%= user._id %>/games/new?game=<%= game.id %>">
-                <li><%= game.name %></li>
-            </a> <a href="<%= game.url %>" target="_blank" rel="noopener noreferrer">IGDB</a>
+            <div class="results-container">
+                <a class="game" href="/users/<%= user._id %>/games/new?game=<%= game.id %>">
+                    <li><%= game.name %></li>
+                </a> <a class="igdb" href="<%= game.url %>" target="_blank" rel="noopener noreferrer">IGDB</a>
+            </div>
             <% }); %>
+
         </ul>
     </div>
 </body>
