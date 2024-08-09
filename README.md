@@ -16,6 +16,9 @@ Inspired by my friend's Google Sheets of their game backlog. Also, we all spend 
 ### Technologies
 HTML / CSS / JavaScript - MongoDB / Express / Node stack
 
+### Planning materials
+[trello](https://trello.com/b/d0eVMcxK/vidya-game-completion-tracker)
+
 ### Stretch goals
 - There's an unused wishlist array in the user schema, to add games that isn't in one's collection yet but want to play
 - Friends list, to keep track of what your friends own without having to search through all users
